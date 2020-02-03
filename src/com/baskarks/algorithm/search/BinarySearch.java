@@ -63,4 +63,60 @@ public class BinarySearch {
                 binarySearchRecursive(array, target, left, midIdx - 1):
                 binarySearchRecursive(array, target, midIdx + 1, right);
     }
+
+    public int binarySearchIterative(int[] array, int target) {
+        if (array == null || array.length == 0)
+            return -1;
+
+        int left = 0;
+        int right = array.length - 1;
+        while(left <= right) {
+            int mid = (left + right) / 2;
+            if (array[mid] == target)
+                return mid;
+            if (target < array[mid])
+                right = mid - 1;
+            else
+                left = mid + 1;
+        }
+        return -1;
+    }
+
+    private int binarySearchRecMosh(int[] array, int target) {
+        return binarySearchRecMosh(array, target, 0, array.length - 1);
+    }
+
+    private int binarySearchRecMosh(int[] array, int target,
+                                   int left, int right) {
+
+        if (left > right)
+            return -1;
+
+        int middle = (left + right) / 2;
+
+        if (array[middle] == target)
+            return middle;
+
+        if ( target < array[middle])
+            return binarySearchRecMosh(array, target, left, middle - 1);
+
+        return binarySearchRecMosh(array, target, middle + 1, right);
+    }
+
+    public int binarySearchIterativeMosh(int[] array, int target) {
+        var left = 0;
+        var right = array.length - 1;
+        while (left <= right) {
+            var middle = (left + right) / 2;
+
+            if (array[middle] == target)
+                return middle;
+
+            if (target < array[middle])
+                right = middle - 1;
+            else
+                left = middle + 1;
+        }
+        return -1;
+    }
 }
