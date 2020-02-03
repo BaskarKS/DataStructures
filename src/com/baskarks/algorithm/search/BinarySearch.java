@@ -49,7 +49,7 @@ public class BinarySearch {
             return -1;
         return binarySearchRecursive(array, target, 0, array.length - 1);
     }
-    private int binarySearchRecursive(int[] array, int target, int left, int right)
+    public int binarySearchRecursive(int[] array, int target, int left, int right)
     {
         if (left > right)
             return -1;
@@ -82,11 +82,11 @@ public class BinarySearch {
         return -1;
     }
 
-    private int binarySearchRecMosh(int[] array, int target) {
+    public int binarySearchRecMosh(int[] array, int target) {
         return binarySearchRecMosh(array, target, 0, array.length - 1);
     }
 
-    private int binarySearchRecMosh(int[] array, int target,
+    public int binarySearchRecMosh(int[] array, int target,
                                    int left, int right) {
 
         if (left > right)
