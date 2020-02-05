@@ -68,7 +68,7 @@ public class ExponentialSearch {
 
         var left = bound / 2;
         var right = bound < array.length ? bound : array.length - 1;
-        
+
         return binarySearch.binarySearchRecursive(array, target,
                 left, right);
     }
