@@ -1,5 +1,7 @@
 package com.baskarks.string.manipulations;
 
+import java.util.Arrays;
+
 public class StringUtils {
     public int countVowels(String word) {
         if (word == null || word.isEmpty())
@@ -95,5 +97,19 @@ public class StringUtils {
             rotated[rotateIdx++] = string[beg++];
 
         return new String(rotated);
+    }
+
+    //Remove Duplicate Characters in the input String
+    public String removeDuplicates(String str) {
+        if (str == null || str.isEmpty())
+            return "";
+        char[] dupeString = str.toCharArray();
+        StringBuilder dupeRemoved = new StringBuilder();
+        dupeRemoved.append(dupeString[0]);
+        for (int i = 1; i < dupeString.length; i++) {
+            if (dupeString[i] != dupeString[i - 1])
+                dupeRemoved.append(dupeString[i]);
+        }
+        return dupeRemoved.toString();
     }
 }

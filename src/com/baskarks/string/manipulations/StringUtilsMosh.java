@@ -98,4 +98,19 @@ public class StringUtilsMosh {
         * */
         return (str1.length() == str2.length() && (str1 + str1).contains(str2));
     }
+
+    public static String removeDuplicates(String str) {
+         //iterate through each character to input string and add to output
+        // if its not seen before
+        if (str == null)
+            return "";
+        StringBuilder output = new StringBuilder();
+        Set<Character> seen = new HashSet<>();
+
+        for (var ch : str.toCharArray()) {
+            if (!seen.contains(ch))
+                output.append(ch);
+        }
+        return output.toString();
+    }
 }

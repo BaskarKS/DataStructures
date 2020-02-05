@@ -13,5 +13,7 @@ public class Main {
         String rotate = "ABCD";
         String rotated = "CABD";
         System.out.println(utils.isRotation(rotate, rotated));
+
+        System.out.println(utils.removeDuplicates("hh"));
     }
 }
