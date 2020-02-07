@@ -1,8 +1,11 @@
 package com.baskarks.string.manipulations;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StringUtils {
+    private final int ASCII_SIZE = 128;
     public int countVowels(String word) {
         if (word == null || word.isEmpty())
             return -1;
@@ -111,5 +114,97 @@ public class StringUtils {
                 dupeRemoved.append(dupeString[i]);
         }
         return dupeRemoved.toString();
+    }
+
+    public String removeDuplicateCharacters(String str) {
+        boolean[] charsSeen = new boolean[ASCII_SIZE];
+        StringBuilder removedDupeChars = new StringBuilder();
+
+        for (char ch : str.toCharArray()) {
+            if (charsSeen[ch])
+                continue;
+            removedDupeChars.append(ch);
+            charsSeen[ch] = true;
+        }
+        return removedDupeChars.toString();
+    }
+
+    public char getMostRepeatedCharacter(String str) {
+        if (str == null)
+            return ' ';
+        Map<Character, Integer> count = new HashMap<>();
+        int max = Integer.MIN_VALUE;
+        char repeatedChar = str.charAt(0);
+        for (char ch : str.toCharArray()) {
+            if (!count.containsKey(ch))
+                count.put(ch, 0);
+            int occurrence = count.get(ch) + 1;
+            count.put(ch, occurrence);
+            if (max <= occurrence) {
+                max = occurrence;
+                repeatedChar = ch;
+            }
+        }
+        return repeatedChar;
+    }
+
+    public String capitalize(String sentence) {
+        if (sentence == null || sentence.trim().isEmpty())
+            return "";
+        String[] words = sentence.trim().split(" +");
+        for (int idx = 0; idx < words.length; idx++)
+            words[idx] = words[idx].substring(0, 1).toUpperCase()
+                                    + words[idx].substring(1);
+        return String.join(" ", words);
+    }
+
+    public boolean areAnagrams(String str1, String str2) {
+        if ((str1 == null || str2 == null) ||
+                str1.length() != str2.length())
+            return false;
+
+        int[] str1Count = new int[ASCII_SIZE];
+        for (char ch : str1.toCharArray())
+            str1Count[ch]++;
+        for (char ch : str2.toCharArray()) {
+            if (--str1Count[ch] < 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    public boolean areAnagramsUsingMap(String str1, String str2) {
+        if ((str1 == null || str2 == null) ||
+                str1.length() != str2.length())
+            return false;
+
+        Map<Character, Integer> str1Count = new HashMap<>();
+        for (char ch : str1.toCharArray()) {
+            if (!str1Count.containsKey(ch))
+                str1Count.put(ch, 0);
+            str1Count.replace(ch, str1Count.get(ch) + 1);
+        }
+
+        for (char ch : str2.toCharArray()) {
+            if (!str1Count.containsKey(ch))
+                return false;
+            if (str1Count.replace(ch, str1Count.get(ch) - 1) < 0)
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isPalindrome(String str) {
+        int start = 0, end = str.length() - 1;
+        str = str.toLowerCase();
+        while (start <= end) {
+            if (str.charAt(start) !=
+                    str.charAt(end))
+                return false;
+            start++;
+            end--;
+        }
+        return true;
     }
 }

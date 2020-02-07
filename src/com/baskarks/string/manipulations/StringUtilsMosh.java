@@ -1,11 +1,9 @@
 package com.baskarks.string.manipulations;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class StringUtilsMosh {
+
     public static int countVowels(String str) {
         int count = 0;
         String vowels = "aeiou";
@@ -112,5 +110,105 @@ public class StringUtilsMosh {
                 output.append(ch);
         }
         return output.toString();
+    }
+
+    public static char getMaxOccurringChar(String str) {
+        if (str == null || str.isEmpty())
+            throw new IllegalArgumentException();
+        final int ASCII_SIZE = 256;
+        int[] frequencies = new int[ASCII_SIZE];
+        for (var ch : str.toCharArray())
+            frequencies[ch]++;
+        int max = Integer.MIN_VALUE;
+        char result = ' ';
+        for (int i = 0; i < frequencies.length; i++) {
+            if (frequencies[i] > max) {
+                max = frequencies[i];
+                result = (char) i;
+            }
+        }
+        return result;
+    }
+
+    public static String capitalize(String sentence) {
+        if (sentence == null || sentence.trim().isEmpty())
+            return "";
+        String[] words = sentence
+                            .trim()
+                            .replaceAll(" +", " ")
+                            .split(" ");
+        for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].substring(0, 1).toUpperCase() +
+                    words[i].substring(1).toLowerCase();
+        }
+        return String.join(" ", words);
+    }
+
+    //Are Anagrams:
+    /*
+    * convert each string into a character array, sort both the arrays,
+    * finally compare both arrays for equality
+    * */
+
+    //O(n log n)
+    public static boolean areAnagrams(String first, String second) {
+        if (first == null || second == null ||
+                (first.length() != second.length()))
+            return false;
+        //O(n)
+        char[] array1 = first.toLowerCase().toCharArray();
+        //O(n Log n)
+        Arrays.sort(array1);
+        char[] array2 = second.toLowerCase().toCharArray();
+        Arrays.sort(array2);
+        //O(n)
+        return Arrays.equals(array1, array2);
+    }
+
+    /*
+    counting no of occurrence in first string and check the
+    count in second string and verify the count - Histogram Approach
+    */
+
+    //O(n)
+    public static boolean areAnagramByHistogram(String first,
+                                                String second) {
+        if (first == null || second == null)
+            return false;
+        final int ENGLISH_ALPHABET = 26;
+        int[] frequencies = new int[ENGLISH_ALPHABET];
+        first = first.toLowerCase();
+        //O(n)
+        for (var i = 0; i < first.length(); i++)
+            frequencies[first.charAt(i) - 'a']++;
+        second = second.toLowerCase();
+        //O(n)
+        for (var i = 0;i < second.length(); i++) {
+            var index = second.charAt(i) - 'a';
+            if (frequencies[index] == 0)
+                return false;
+            frequencies[index]--;
+        }
+        return true;
+    }
+
+    public static boolean isPalindrome(String word) {
+        if (word == null)
+            return false;
+/*
+        var input = new StringBuilder(word);
+        input.reverse();
+        return input.toString().equals(word);
+*/
+        int left = 0, right = word.length() - 1;
+
+        while (left < right) {
+            if (word.charAt(left) != word.charAt(right))
+                return false;
+            left++;
+            right--;
+        }
+
+        return true;
     }
 }
