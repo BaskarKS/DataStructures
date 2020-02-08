@@ -6,5 +6,9 @@ public class Main {
         var steps = StairCaseToHeaven.
                 getNoOfWaysToHeaven(5);
         System.out.println(steps);
+
+        int matrixRow = 4, matrixCol = 5;
+        System.out.println(OnTheWayHome.
+                onTheWayHome(matrixRow, matrixCol));
     }
 }
