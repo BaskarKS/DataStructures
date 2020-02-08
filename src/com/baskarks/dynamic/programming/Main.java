@@ -10,5 +10,10 @@ public class Main {
         int matrixRow = 4, matrixCol = 5;
         System.out.println(OnTheWayHome.
                 onTheWayHome(matrixRow, matrixCol));
+
+        int[] cost = {0, 2, 4, 5, 7, 11, 13, 17};
+        int rodLength = 4;
+        int max = RodCutter.getMaxRodCutPrice(rodLength, cost);
+        System.out.println("Max Rod Price : " + max);
     }
 }
