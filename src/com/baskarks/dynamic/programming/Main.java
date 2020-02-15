@@ -24,5 +24,16 @@ public class Main {
         int[] stockPrices = {8, 1, 2, 4, 6, 3};
         int maxStockGain = ShareMarketAnalysis.shareMarket(stockPrices);
         System.out.println("Max Stock Gain : " + maxStockGain);
+
+        int[] sumOfRange = {1, -2, 3, 10, -8, 0};
+        int from = 1;
+        int to = 4;
+        var sumOfRangeInstance = new SumOfTheRange(sumOfRange);
+        int sum = sumOfRangeInstance.sumOfTheRange(from, to);
+        System.out.println("Sum of Range : " + sum);
+
+        int[] getLis = {11, 23, 10, 37, 21, 50, 80};
+        int lis = LongIncreaseSubSequence.LISubSequence(getLis);
+        System.out.println("LIS : " + lis);
     }
 }
