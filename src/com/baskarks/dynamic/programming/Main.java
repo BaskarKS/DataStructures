@@ -35,5 +35,9 @@ public class Main {
         int[] getLis = {11, 23, 10, 37, 21, 50, 80};
         int lis = LongIncreaseSubSequence.LISubSequence(getLis);
         System.out.println("LIS : " + lis);
+
+        int lengthOfArray = 5;
+        var noOfDominosArrangement = DominoArrangements.noOfWays(lengthOfArray);
+        System.out.println("no of Dominos Arrangement : " + noOfDominosArrangement);
     }
 }
