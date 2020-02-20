@@ -39,5 +39,11 @@ public class Main {
         int lengthOfArray = 5;
         var noOfDominosArrangement = DominoArrangements.noOfWays(lengthOfArray);
         System.out.println("no of Dominos Arrangement : " + noOfDominosArrangement);
+
+        int[] stepCost = {2, 1, 3, 1, 2};
+        int noOfSteps = 5;
+        int minCost = StairWayToHeavenTwo.minFeeToReachHeaven(stepCost, noOfSteps);
+        System.out.println("Min fee to Reach : " + minCost);
+        StairWayToHeavenTwo.minimumPathToReachHeaven(stepCost, noOfSteps);
     }
 }
