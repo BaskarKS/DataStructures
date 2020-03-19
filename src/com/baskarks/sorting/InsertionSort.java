@@ -14,7 +14,7 @@ package com.baskarks.sorting;
 *
 * in the given array, move from left to right for every item
 *
-*  we encounter 8 as first element we dont do anything because
+* we encounter 8 as first element we don't do anything because
 * we assume 8 is in its correct position
 *
 *  we encounter 2 as second element, we store the 2 in temp location
