@@ -64,8 +64,8 @@ public class QuickSort {
     * secondOne to mark the boundary where we are supposed to
     * place the pivot item, will be the end of the left partition
     *  b i                              PIVOT IS 13
-    * -1 0   1  2  3  4   5   6
-    *    15, 6, 3, 1, 22, 10, 13
+    * -1  0   1  2  3  4   5   6
+    * 15, 6, 3, 1, 22, 10, 13
     * initially b is -1 which indicates the left partition is empty
     *
     * move i pointer, if the item pointed by i is larger than pivot
@@ -94,7 +94,7 @@ public class QuickSort {
     *    0   1  2  3  4   5   6
     *    6,  3, 15, 1, 22, 10, 13
     * item at i smaller than pivot, increment b and swap it
-    *           b  i                      PIVOT IS 13
+    *             b  i                      PIVOT IS 13
     *    0   1  2  3  4   5   6
     *    6,  3, 1, 15, 22, 10, 13
     * increment i and check
@@ -103,17 +103,17 @@ public class QuickSort {
     *    6,  3, 1, 15, 22, 10, 13
     * item at it 22 is greater than pivot, we move on
     * increment i and check
-    *           b          i                PIVOT IS 13
+    *              b          i                PIVOT IS 13
     *    0   1  2  3   4   5   6
     *    6,  3, 1, 15, 22, 10, 13
     * item at i is smaller than pivot, increment b and swap
-    *              b       i                PIVOT IS 13
+    *                  b           i                PIVOT IS 13
     *    0   1  2  3   4   5   6
     *    6,  3, 1, 10, 22, 15, 13
     * increment i and we could figure out it reached pivot
     * increment b and swap so that pivot will move to its
     * correct position
-    *                  b        i            PIVOT IS 13
+    *                       b        i            PIVOT IS 13
     *    0   1  2  3   4   5   6
     *    6,  3, 1, 10, 13, 15, 22
     * at the end of iteration, b points to pivot

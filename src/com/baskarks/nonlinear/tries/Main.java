@@ -9,33 +9,34 @@ public class Main {
         Trie trie = new Trie();
         trie.insert("cat");
         trie.insert("can");
-        trie.insert("cannot");
-        System.out.println("Checking Contains Method");
-        System.out.println(trie.containsRecursive("can"));
-        System.out.println(trie.containsRecursive("ca"));
-        System.out.println(trie.containsRecursive(" "));
-        System.out.println(trie.containsRecursive(null));
-        trie.traversePreOrder();
-        System.out.println();
-        trie.traversePostOrder();
-        trie.remove("cannot");
-        trie.traversePreOrder();
-
-        System.out.println();
-        System.out.println();
+        trie.insert("cot");
+        System.out.println(trie.wordCount());
+//        System.out.println("Checking Contains Method");
+//        System.out.println(trie.containsRecursive("can"));
+//        System.out.println(trie.containsRecursive("ca"));
+//        System.out.println(trie.containsRecursive(" "));
+//        System.out.println(trie.containsRecursive(null));
+//        trie.traversePreOrder();
+//        System.out.println();
+//        trie.traversePostOrder();
+//        trie.remove("cannot");
+//        trie.traversePreOrder();
+//
+//        System.out.println();
+//        System.out.println();
         Trie autoComplete = new Trie();
-        autoComplete.insert("car");
-        autoComplete.insert("card");
-        autoComplete.insert("care");
-        autoComplete.insert("cared");
-        autoComplete.insert("carrot");
-        autoComplete.insert("ball");
-        autoComplete.insert("bar");
-        System.out.println("Searched Words : ");
-        List<String> words = autoComplete.findWords("");
-        System.out.println(words);
-        System.out.println("word count : " + autoComplete.wordCount());
-
+//        autoComplete.insert("car");
+//        autoComplete.insert("card");
+//        autoComplete.insert("care");
+//        autoComplete.insert("cared");
+//        autoComplete.insert("carrot");
+//        autoComplete.insert("ball");
+//        autoComplete.insert("bar");
+//        System.out.println("Searched Words : ");
+//        List<String> words = autoComplete.findWords("");
+//        System.out.println(words);
+//        System.out.println("word count : " + autoComplete.wordCount());
+//
         String[] commonWords = {"cargo", "carnival"};
         System.out.println(autoComplete.longestCommonPrefix(commonWords));
     }

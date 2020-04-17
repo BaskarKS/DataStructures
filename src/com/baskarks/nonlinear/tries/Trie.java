@@ -17,7 +17,7 @@ package com.baskarks.nonlinear.tries;
  * relatively slow, have to go through every word and check
  * for prefix
  *
- * Tries allows to store millions of words to store and
+ * Tries allows to store millions of words to store, and
  * easier look up
  *
  * English we have 26 alphabets, each node in trie
@@ -150,7 +150,7 @@ public class Trie {
             traversePreOrder(child);
     }
 
-    //Pre-Order is used probably to delete from the trie
+    //Post-Order is used probably to delete from the trie
     public void traversePostOrder() {
         traversePostOrder(root);
     }
@@ -167,7 +167,7 @@ public class Trie {
             return;
         remove(root, word, 0);
     }
-    private void remove(Node root,String word, int index) {
+    private void remove(Node root, String word, int index) {
         if (index == word.length()) {
             root.isEndOfWord = false;
             return;
