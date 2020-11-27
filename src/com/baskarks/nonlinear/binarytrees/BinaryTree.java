@@ -123,6 +123,8 @@ public class BinaryTree {
         return min(getRoot());
     }
     private int min(Node root) {
+        if (root == null)
+            return Integer.MAX_VALUE;
         if (isLeaf(root))
             return root.value;
         int left = min(root.leftChild);

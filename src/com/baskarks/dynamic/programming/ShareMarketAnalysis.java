@@ -8,6 +8,11 @@ package com.baskarks.dynamic.programming;
 * sell a stock before you buy one.
 * */
 public class ShareMarketAnalysis {
+    public static void main(String[] args) {
+        int[] stockPrices = {8, 1, 2, 4, 6, 3};
+        int maxStockGain = ShareMarketAnalysis.shareMarket(stockPrices);
+        System.out.println("Max Stock Gain : " + maxStockGain);
+    }
     public static int shareMarket(int[] prices) {
         int[] minPrices = new int[prices.length];
         int[] maxStocks = new int[prices.length];

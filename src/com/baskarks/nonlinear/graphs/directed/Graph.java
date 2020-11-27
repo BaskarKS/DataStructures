@@ -7,16 +7,17 @@ package com.baskarks.nonlinear.graphs.directed;
  * people on social media platform
  * (how they are connected and how strong the connection)
  *
- * Like trees graphs also contains Nodes and edges
+ * Like trees, graphs also contains Nodes and edges
  * A tree is a kind of graph without any cycles
  *
  * In graphs we don't have root nodes
  * Node in graph is also called vertices - (Vertex plural)
- * Nodes can be connected to any other nodes, no limitation
- * of having edges connected to a Node
+ * Nodes can be connected to any other nodes,
+ * no limitation of having edges connected to a Node
  *
  * If 2 nodes are directly connected - they are adjacent / neighbours
- * If edges have direction - they are directed graph (eg : Twitter)
+ *
+ *  If edges have direction - they are directed graph (eg : Twitter)
  * Undirected graphs - (eg: Facebook and LinkedIn)
  *
  * The edges can have weight - weights are used to represent
@@ -29,9 +30,10 @@ package com.baskarks.nonlinear.graphs.directed;
  * 1. Adjacency List.
  * 2. Adjacency Matrix.
  *
- * 1. Adjacency Matrix: Two dimensional array used to represent
- * row and column represent the nodes, intersection values
- * represent the connection(edges) between them
+ * 1. Adjacency Matrix:
+ * Two dimensional array used to represent
+ * row and column represent the nodes,
+ * intersection values represent the connection(edges) between them
  *
  * Problem : lot of memory needed to maintain
  * for n nodes => space complexity is O(N^2)
@@ -54,27 +56,27 @@ package com.baskarks.nonlinear.graphs.directed;
  * matrix is O(1)
  *
  * Finding all adjacent Nodes (neighbouring nodes) :
- * get the node from hashmap for which the adjacent nodes need
- * to find and read the entire row of the matrix for
- * the respective node is equal to number of vertices in graph
+ * Get the node from hashmap for which the adjacent nodes need to be found
+ * Read the entire row of the matrix for the respective node is equal to number
+ * of vertices in graph
  * O(V)
  *
  * Space - O(V^2)
+ * Adding a node / vertex - O(V^2)
+ * Removing a node / vertex - O(V^2)
  * Add Edge - O(1)
  * Remove Edge - O(1)
  * Query Edge - O(1)
  * Finding neighbours - O(V)
- * Adding a node / vertex - O(V^2)
- * Removing a node / vertex - O(V^2)
  *
  * 2. Adjacency List:
  * Array of linked list - every element in array has linked list
  * this linked list contains adjacent/ neighbouring nodes
  *
  * HashMap maintained to find index of Node
- * for Node we get index from hashMap and using the index,
- * we go to respective array index and get the linked list of
- * neighbouring nodes
+ * for Node we get index from hashMap
+ * Using the index, we go to respective array index and get the
+ * linked list of neighbouring nodes
  *
  * We only store the edges that exist in linked list, more
  * space efficient than adjacency matrix.
@@ -91,18 +93,21 @@ package com.baskarks.nonlinear.graphs.directed;
  *
  * Add a Node - we just add a new element in list O(1)
  *
- * Removing a Node - Remove corresponding element from list and
- * have to remove its entries in other vertices Linked list.
+ * Removing a Node -
+ * Remove corresponding element from list and
+ * have to remove its entries in other vertices/node Linked list.
  * O(V + E)
  * worst case => dense graphs => O(V^2)
  *
- * Adding a Edge - find the node index from hashmap is O(1)
- * and add a node in the list by looking the entire list, to
- * ensure the edge doesn't exist already - O(k) (k is no of
- * edges that node has)
+ * Adding a Edge -
+ * 1. Find the node index from hashmap is O(1)
+ * 2. Add a node in the list by looking the entire list, to
+ * ensure the edge doesn't exist already - O(K)
+ * (k is no of edges that node has)
  * worst case => O(V) (can have V nodes in the list)
  *
- * Removing a Edge - find the node index from hashmap is O(1)
+ * Removing a Edge -
+ * Find the node index from hashmap is O(1)
  * and iterate the entire list in respective node index in array
  * and find the element to remove O(K)
  * worst Case => O(V)
@@ -114,15 +119,15 @@ package com.baskarks.nonlinear.graphs.directed;
  * and iterate entire list of the node location in list.
  * O(K) and worst case : O(V)
  *
- * Params               Matrix          List      Dense Graph
- *                                                Using List
- * space                O(V^2)        O(V + E)      O(V^2)
- * Add Edge             O(1)          O(K)          O(V)
- * Remove Edge          O(1)          O(K)          O(V)
- * Query Edge           O(1)          O(K)          O(V)
- * Finding Neighbours   O(V)          O(K)          O(V)
- * Add Node             O(V^2)        O(1)          O(V^2)
- * Remove Node          O(V^2)        O(V^2)        O(V^2)
+ * Params                            Matrix            List             Dense Graph
+ *                                                           Using List
+ * space                            O(V^2)        O(V + E)         O(V^2)
+ * Add Edge                       O(1)              O(K)               O(V)
+ * Remove Edge                O(1)              O(K)               O(V)
+ * Query Edge                   O(1)              O(K)               O(V)
+ * Finding Neighbours      O(V)              O(K)               O(V)
+ * Add Node                    O(V^2)           O(1)             O(V^2)
+ * Remove Node             O(V^2)         O(V^2)          O(V^2)
  *
  * for Dense graph / too much of edges better use matrix
  * otherwise List is better
@@ -216,9 +221,9 @@ public class Graph {
         System.out.println(root);
         visited.add(root);
 
-        for (Node neighbours : adjacencyList.get(root))
-            if (!visited.contains(neighbours))
-                traverseDepthFirst(neighbours, visited);
+        for (Node neighbour : adjacencyList.get(root))
+            if (!visited.contains(neighbour))
+                traverseDepthFirst(neighbour, visited);
     }
 
     public void traverseDepthFirstIterative(String fromNode) {
@@ -238,7 +243,7 @@ public class Graph {
             visited.add(current);
 
             for (var neighbour : adjacencyList.get(current))
-                stack.push(neighbour);
+                    stack.push(neighbour);
         }
     }
 
@@ -295,13 +300,24 @@ public class Graph {
 
     //at last we pop out the stack to find the right order.
 
+    /*
+                        /------------> B----------->\
+                    A                                         D
+                       \-------------->C ----------->/
+
+                       in Stack =>   ACBD => D is pushed first, A is pushed last
+                       output List => popped from stack and list formed => ACBD
+    * */
     public List<String> topologicalSort() {
 
         Stack<Node> stack = new Stack<>();
-        Set<Node> visited = new HashSet<>();
-        for (var eachNode : nodes.values())
+        Set<Node> visited = new HashSet<>(); // visited in passed in
+        // common for visiting all nodes, passing common visited is the turning point of the solution
+
+        for (var eachNode : nodes.values()) // explore all the node to find the topological order
             topologicalSort(eachNode, stack, visited);
 
+        //stack contains the total order,
         List<String> sorted = new ArrayList<>();
         while(!stack.isEmpty())
             sorted.add(stack.pop().label);
@@ -310,15 +326,15 @@ public class Graph {
     }
     private void topologicalSort(Node root, Stack<Node> stack, Set<Node> visited) {
 
-        if (visited.contains(root))
+        if (visited.contains(root)) // if the node is already visited, just return // this check is the turning point of the solution
             return;
 
-        visited.add(root);
+        visited.add(root); // if the node is not visited, make it visited
 
-        for (var neighbour : adjacencyList.get(root))
+        for (var neighbour : adjacencyList.get(root)) // explore each neighbour in depth-first
             topologicalSort(neighbour, stack, visited);
 
-        stack.push(root);
+        stack.push(root); // if no more neighbours are left to explore, push it to stack
     }
 
     /*
@@ -358,27 +374,58 @@ public class Graph {
         Set<Node> visiting = new HashSet<>();
         Set<Node> visited = new HashSet<>();
 
-        while (!all.isEmpty()) {
-            Node current = all.iterator().next();
-            if (hasCycle(current, all, visiting, visited))
+        while (!all.isEmpty()) { // iterate till all list become empty
+            Node current = all.iterator().next(); // get a node from all list
+            if (hasCycle(current, all, visiting, visited)) // check the fetched node has a cycle
+                return true; // return immediately if the node forms a cycle, no need to check others
+        }
+        return false; // means all nodes don't form a cycle
+    }
+
+    private boolean hasCycle(Node node, Set<Node> all,
+                             Set<Node> visiting, Set<Node> visited) {
+        all.remove(node); // remove the node from all list
+        visiting.add(node); // add the node to visiting list as its been explored further
+
+        for (var neighbour : adjacencyList.get(node)) { // explore all the neighbours of node
+            if (visited.contains(neighbour)) // skip if the node is already visited
+                continue;
+
+            if (visiting.contains(neighbour)) // if the neighbour is still in visiting, theres a cycle
+                return true;
+
+            if(hasCycle(neighbour, all, visiting, visited)) // do a depth-first on the neighbour node
+               return true; // return immediately, exploring neighbour forms a cycle
+        }
+        visiting.remove(node); // all neighbours are explored, hence its removed in visiting list
+        visited.add(node); // all neighbours are explored, hence its added to visited list
+        return false; // control comes here when the node doesn't form a cycle
+    }
+    private boolean hasCycleInGraph() {
+        Set<Node> all = new HashSet<>(nodes.values());
+        Set<Node> visiting = new HashSet<>();
+        Set<Node> visited = new HashSet<>();
+
+        while(!all.isEmpty()) {
+            Node toVisit = all.iterator().next();
+            if (checkCycle(toVisit, all, visiting, visited))
                 return true;
         }
         return false;
     }
-    private boolean hasCycle(Node node, Set<Node> all,
-                             Set<Node> visiting, Set<Node> visited) {
+    private boolean checkCycle(Node node, Set<Node> all,
+                               Set<Node> visiting, Set<Node> visited) {
+
         all.remove(node);
         visiting.add(node);
 
-        for (var neighbour : adjacencyList.get(node)) {
+        for (Node neighbour : adjacencyList.get(node)) {
             if (visited.contains(neighbour))
                 continue;
-
             if (visiting.contains(neighbour))
                 return true;
-
-            if(hasCycle(neighbour, all, visiting, visited))
-               return true;
+            if (checkCycle(neighbour, all, visiting, visited))
+                return true;
         }
         visiting.remove(node);
         visited.add(node);

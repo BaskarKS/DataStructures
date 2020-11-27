@@ -9,8 +9,8 @@ public class Main {
         graph.addNode("B");
         graph.addNode("C");
         graph.addNode("D");
-        graph.addEdge("A", "C");
         graph.addEdge("A", "B");
+        graph.addEdge("A", "C");
         graph.addEdge("B", "D");
         graph.addEdge("C", "D");
 
@@ -18,8 +18,18 @@ public class Main {
         //graph.removeEdge("A", "C");
         //graph.removeNode("B");
         //graph.print();
-        //graph.traverseDepthFirstIterative("A");
-        graph.breadthFirstTraversal("A");
+                                               // A---------------------> B
+                                              //   |                             |
+                                             //    |                             |
+                                            //    V                            V
+                                            //     C--------------------->D
+                                            //  ABDC
+
+        graph.traverseDepthFirstIterative("A");
+
+       // graph.breadthFirstTraversal("A");
+
+/*
         List<String> topologicalSort = graph.topologicalSort();
         System.out.println(topologicalSort);
 
@@ -31,6 +41,7 @@ public class Main {
         cycleGraph.addEdge("B", "C");
         cycleGraph.addEdge("A", "C");
         System.out.println("Has Cycle : " + cycleGraph.hasCycle());
+*/
 
     }
 }

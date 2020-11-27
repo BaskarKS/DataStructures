@@ -7,7 +7,9 @@ public class MaxHeap {
         //instead of going from top to last parent
         //heapify from last parent to top of the tree
         // will have less recursions and more optimisation
-        for (int i = lastParentIndex; i >= 0 ; i--) {
+
+        for (int i = lastParentIndex; i >= 0 ; i--) { // its only correct to heapify from last parent to the top parent, heapify sould happen from last parent to down the tree
+        //for (int i = 0; i < array.length; i++) { // iterating from beg to end will not do proper heapify it will miss out some values to bubble up
             heapify(array, i);
         }
     }

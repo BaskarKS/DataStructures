@@ -8,7 +8,7 @@ package com.baskarks.nonlinear.heaps;
  * be filled from left to right
  *
  * Heap property - every node should be greater than equal to
- * its child nodes, its Max Heap. Every node is lesser than
+ * all of its child nodes, its Max Heap. Every node is lesser than
  * equal to its child nodes is Min Heap
  *
  * Binary Heap it tree consist of 2 child for every nodes
@@ -23,12 +23,14 @@ package com.baskarks.nonlinear.heaps;
  * Heap is build while inserting the nodes at leaf, and check
  * for heap property. if it doesn't satisfy, we move it
  * to its right place (move up / bubble up)
- * Max Heap - added large values will bubble up
- * Min Heap - added small values will bubble up
+ * Max Heap - added new node.value of new node is large value it will bubble up
+ * Min Heap - added new node.value of new node is small value it will bubble up
  *
  * Time Complexity - Longest path the value can bubble
  * up is equal to the height of the tree ( equal to the
- * value searched in a binary tree O(log n))
+ * value searched in a binary search tree O(log n))
+ *
+ * maximum number of comparisons we do is equal to the height of the tree
  *
  * Im Mathematics - in a balanced binary tree, the height
  * of the tree is equal to log(n) => h = log(n)
@@ -38,6 +40,7 @@ package com.baskarks.nonlinear.heaps;
  * placed value at root with its children and swap the largest
  * value and continue the same until the value find its correct
  * place - this process in bubble down.
+ *
  * complexity is O(log n) because it can travel the longest
  * distance of equal to height of the tree.
  *

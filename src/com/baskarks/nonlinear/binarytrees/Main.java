@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+        /*BinaryTree tree = new BinaryTree();
         System.out.println(tree.find(10));
         tree.insert(7);
         tree.insert(4);
@@ -21,12 +21,14 @@ public class Main {
         tree.traversePostOrder();
         tree.heightOfTree();
         new BinaryTree().heightOfTree();
+
         System.out.println("Min Node in Tree : " + tree.min());
         System.out.println("Min Node in Binary Search Tree : " +
                 tree.binarySearchTreeMin());
         BinaryTree otherTree = new BinaryTree();
         otherTree.insert(7);
         otherTree.insert(4);
+        System.out.println(otherTree.min());
         otherTree.insert(9);
         otherTree.insert(1);
         otherTree.insert(6);
@@ -71,5 +73,12 @@ public class Main {
             for (int each : ancestors)
                 System.out.print(each + "..");
         }
+
+*/
+        BinaryTree tree = new BinaryTree();
+        tree.insert(7);
+        //tree.insert(4);
+        //tree.insert(1);
+        System.out.println(tree.min());
     }
 }
